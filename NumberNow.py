@@ -17,11 +17,11 @@ dataArray = []
 print('Welcome to Number Now')
 
 def doCalc2(x,y,z): #main function that processes the input
-	x = int(input('What number should we start at?'))
+	x = int(input('What is the starting number?'))
 	y = int(input('How many records would you like?'))
-	z = int(input('Enable zero padding? 1 or 0 please'))
+	z = input('Enable zero padding? Y/N')
 	
-	if z==1:
+	if z=='Y' or 'y' or 'Yes' or 'yes':
 		ztext = 'On'
 	else:
 		ztext = 'Off'
@@ -30,9 +30,10 @@ def doCalc2(x,y,z): #main function that processes the input
 	a=x+y
 	o=x
 	while x < a:
-		if z==1:
+		if z=='Y' or 'y' or 'Yes' or 'yes':
 			# if we are using zero padding, we process each number through the zero function before appending it to the array
-			b = zero(a)
+			b = str(x)
+			b = b.zfill(j)
 			dataArray.append(b)
 			x = x+1
 		else:
@@ -48,11 +49,7 @@ def doCalc2(x,y,z): #main function that processes the input
 		
 		for cell in dataArray: 
 			writer.writerow ([cell])
-	print(f'You generated a CSV file that has {y} entries, starting at {o} and zero padding is {ztext}')	
-			    	
-def zero(s):
-	s = j2.format(s)
-	return s
+	print(f'You generated a CSV file that has {y} entries, starting at {o} and zero padding is {ztext}')
 
 
 doCalc2(x,y,z)
